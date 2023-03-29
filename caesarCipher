@@ -1,0 +1,43 @@
+import java.util.Scanner; // import user input 
+class caesar {
+  public static void main(String[] args) {
+    
+    Scanner in = new Scanner(System.in);
+    
+    System.out.print("What is your message? ");
+    String message = in.nextLine(); // input message
+    int l = message.length(); // length of message
+   
+    System.out.print("Encoding key? ");
+    int key = in.nextInt(); // input encoding key
+    	if (key > 26) {
+          key = key % 26; // this accounts for if letter starts with z and the key is above 26
+          				 // the remainder will be how many times it wraps around
+        }
+    
+    char c;
+    System.out.print("Your message: ");
+   
+    for (int i = 0; i < l; i++) { // go through length of message
+    	c = message.charAt(i); // starts at first letter in message
+
+        if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <='z')) { // contains user input within the alphabet whether upper or lower case
+            c += key; // allows key to be any letter user inputs
+            if((c >= 'A' && c <= 'Z') || (c >= 'a' && c <='z')) { // After adding the key to the character, is it still within the alphabet? 
+                                                                 // If so, do nothing
+        
+            }
+
+            else { 
+              c -= 26; // wraps around the alphabet
+              
+          	}
+         	c = Character.toUpperCase(c); // changes message to upper case 
+         	System.out.print(c);
+        }
+        else {
+          System.out.print(" ");
+        }
+	}
+  }
+}
